@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="/style.css" type='text/css'>
+</head>
+
+<body>
+    <h2>Edit Product</h2>
+    <div class="container">
+    <form class="Form" action="/products/<%=product._id%>?_method=PUT" method="POST">
+        <label for="name">Product Name</label>
+        <input type="text" name="name" id="name" placeholder="product name" value="<%=product.name%>"><br>
+        <label for="brand">Brand Name</label>
+        <input type="text" name="brand" id="brand" placeholder="Brand name" value="<%=product.brand%>"><br>
+        <label for="quantity">Quantity </label>
+        <input type="text" name="quantity" id="quantity" placeholder="quantity" value="<%=product.quantity%>"><br>
+        <label for="price">Price (Unit)</label>
+        <input type="number" id="price" name="price" placeholder="price" value="<%= product.price %>"><br>
+        <label for="category">Select Category</label>
+        <select name="category" id="category">
+            <% for(let category of categories){ %>
+            <option value="<%=category%>" <%= product.category === category ? 'selected': '' %>><%=category%></option>
+            <% } %>
+        </select><br>
+            <button class="btn">Submit</button>
+        
+    </form>
+
+    <div class="contain">
+    <a class="btn" href="/products/<%=product._id%>">Cancel</a></div>
+</div>
+</body>
+
+</html>
